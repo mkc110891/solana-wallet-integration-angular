@@ -1,27 +1,53 @@
-# SolanaWalletIntegrationAngular
+# Solana Wallet Integration in Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.12.
 
-## Development server
+## npm dependency
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```
+npm i @solana/spl-token --save
+npm i @solana/web3.js --save
+```
 
-## Code scaffolding
+## module dependency
+Add HttpClientModule in the imports
+```
+import { HttpClientModule } from '@angular/common/http';
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+@NgModule({
+  declarations: [
+    ...
+  ],
+  imports: [
+    ...
+    HttpClientModule
+  ],
+  ...
+})
+```
+## Add JS compatibility
+- Create 'typings' folder at the root of the project
+- Create a file 'index.d.ts' inside the 'typings' folder and add the below content
 
-## Build
+```
+declare module 'buffer-layout';
+```
+- Edit tsconfig.json file. Add the below content at the end of the JSON object
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+ "typeRoots": [
+    "./typings",
+    "./node_modules/@types/"
+  ]
+```
+- Edit tsconfig.json file. Add the below content in the "compilerOptions" object of the JSON
 
-## Running unit tests
+```
+"allowSyntheticDefaultImports": true,
+"noImplicitAny": false
+```
+- Edit polyfills.ts file. Add the below content at the end of the file
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```
+(window as any).global = window;
+```
