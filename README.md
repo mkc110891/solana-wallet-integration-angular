@@ -51,3 +51,6 @@ declare module 'buffer-layout';
 ```
 (window as any).global = window;
 ```
+
+## Home page preview
+![Home Page](/readme/s1.png?raw=true "Home Page")
