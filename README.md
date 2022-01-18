@@ -62,4 +62,4 @@ declare module 'buffer-layout';
 ```
 
 ## Home page preview
-![Home Page](/readme/s2.png?raw=true "Home Page")
+![Home Page](/readme/s3.png?raw=true "Home Page")
