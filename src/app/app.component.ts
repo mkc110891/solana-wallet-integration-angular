@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Enum } from '@solana/web3.js';
 import { WalletService } from './interface/wallet-service.interface';
 import { PhantomWalletService } from './service/phantom-wallet.service';
 import { SolflareWalletService } from './service/solflare-wallet.service';
+import { SolletWalletService } from './service/sollet-wallet.service';
 
 @Component({
   selector: 'app-root',
@@ -13,11 +13,13 @@ export class AppComponent {
   title = 'Solana Wallet Integration Angular';
   walletTypes: any = {
     phantom: 'phantom',
-    solflare: 'solflare'
+    solflare: 'solflare',
+    sollet: 'sollet'
   }
   constructor(
     private phantomWalletService: PhantomWalletService,
-    private solflareWalletService: SolflareWalletService
+    private solflareWalletService: SolflareWalletService,
+    private solletWalletService: SolletWalletService
     ) {
     this.phantomWalletService.setNetworkConnection('testnet');
     
@@ -27,6 +29,9 @@ export class AppComponent {
 
     this.solflareWalletService.setNetworkConnection('testnet');
     this.solflareWalletService.setTokenWallet('CpMah17kQEL2wqyMKt3mZBdTnZbkbfx4nqmQMFDP5vwp');
+
+    this.solletWalletService.setNetworkConnection('testnet');
+    this.solletWalletService.setTokenWallet('CpMah17kQEL2wqyMKt3mZBdTnZbkbfx4nqmQMFDP5vwp');
   }
 
   async connectWallet(walletService: WalletService) {
@@ -36,6 +41,9 @@ export class AppComponent {
       break;
       case this.walletTypes.solflare:
         await this.solflareWalletService.connectSolflare();
+      break;
+      case this.walletTypes.sollet:
+        await this.solletWalletService.connectSollet();
       break;
     }
     
@@ -51,18 +59,28 @@ export class AppComponent {
         await this.solflareWalletService.getBalance();
         console.log('Token Balance: ', this.solflareWalletService.tokenBalance);
       break;
+      case this.walletTypes.sollet:
+        await this.solletWalletService.getBalance();
+        console.log('Token Balance: ', this.solletWalletService.tokenBalance);
+      break;
     }
     
     
   }
 
   async transferToken(walletService: WalletService) {
+    let solletWallet = 'DzYrzLsXHBhp3WAYRVQjaffS9u8i1GKan3gdzpFPquwV';
+    let solflareWallet = '74W215ni4AdWJxoybFYSfsWFjXMAoS3avNqtPsvkzbyo';
+    let phantomWallet = '2MfKdhiBtkV3so8S9GNnzhx9MaP7A4weGVYHp9qNByqZ';
     switch (walletService) {
       case this.walletTypes.phantom:
-        await this.phantomWalletService.transferToken(0.001, '74W215ni4AdWJxoybFYSfsWFjXMAoS3avNqtPsvkzbyo');
+        await this.phantomWalletService.transferToken(0.005, solletWallet);
       break;
       case this.walletTypes.solflare:
-        await this.solflareWalletService.transferToken(0.001, '2MfKdhiBtkV3so8S9GNnzhx9MaP7A4weGVYHp9qNByqZ');
+        await this.solflareWalletService.transferToken(0.001, solletWallet);
+      break;
+      case this.walletTypes.sollet:
+        await this.solletWalletService.transferToken(0.001, phantomWallet);
       break;
     }
   }

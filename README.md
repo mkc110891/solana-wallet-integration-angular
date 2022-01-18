@@ -5,12 +5,17 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Integrated wallets
 - Phantom Wallet
 - Solflare Wallet
+- Sollet Wallet
 
 ## npm dependency
 
 ```
 npm i @solana/spl-token --save
 npm i @solana/web3.js --save
+```
+For Sollet
+```
+npm i @project-serum/sol-wallet-adapter --save
 ```
 
 ## module dependency
