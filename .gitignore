@@ -38,7 +38,7 @@ chrome-profiler-events*.json
 npm-debug.log
 yarn-error.log
 testem.log
-/typings
+# /typings
 
 # System Files
 .DS_Store
