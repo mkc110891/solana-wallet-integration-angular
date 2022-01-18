@@ -11,8 +11,8 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class PhantomWalletService {
-  
+export class SolflareWalletService {
+
   walletProvider?: any;
   connection!: Connection;
   myToken!: Token;
@@ -48,30 +48,30 @@ export class PhantomWalletService {
     this.tokenWallet = tokenWallet;
   }
 
-  private async connectPhantomWallet() {
-    const isPhantomInstalled = window.solana && window.solana.isPhantom;
-    if ( isPhantomInstalled ) {
-      if ("solana" in window) {
-        const provider = window.solana;
-        if (provider.isPhantom) {
+  private async connectSolflareWallet() {
+    const isSolflareInstalled = window.solflare && window.solflare.isSolflare;
+    if ( isSolflareInstalled ) {
+      if ("solflare" in window) {
+        const provider = window.solflare;
+        if (provider.isSolflare) {
           if (!provider.isConnected) {
             try {
-              await window.solana.connect();
-              return window.solana;
+              await window.solflare.connect();
+              return window.solflare;
             } catch (err) {
                 console.log('err ==> ', err);
             }
           } else {
             console.log('Already Exists Connection');
-            await window.solana.connect();
-            return window.solana;
+            await window.solflare.connect();
+            return window.solflare;
           }    
         }
       } else {
         return false;
       }
     } else {
-      console.log("Phantom wallet is not installed")
+      console.log("Solflare wallet is not installed")
     }
   }
 
@@ -85,13 +85,13 @@ export class PhantomWalletService {
     );
   }
 
-  async connectPhantom() {
-    this.walletProvider = await this.connectPhantomWallet();
+  async connectSolflare() {
+    this.walletProvider = await this.connectSolflareWallet();
     console.log('Public Key ==> ', this.walletProvider.publicKey.toString());
     this.createToken();
   }
 
-  async disconnectPhantomWallet() {
+  async disconnectSolflareWallet() {
     await this.walletProvider.disconnect();
   }
 
@@ -196,5 +196,4 @@ export class PhantomWalletService {
       }
     }
   }
-
 }

@@ -286,28 +286,50 @@
 <div class="content" role="main">
 
   <!-- Highlight Card -->
-  <div class="card highlight-card card-small">
+  <!-- <div class="card highlight-card card-small">
     <span>{{ title }} app is running!</span>
-  </div>
+  </div> -->
 
   <!-- Resources -->
-  <h2>Wallets</h2>
+  <h2>Phantom wallet</h2>
   <p>Here are some methods:</p>
 
   <div class="card-container">
-    <a class="card" rel="noopener" href="#" (click)="connectPhantomWallet()">
+    <a class="card" rel="noopener" href="javascript:;" (click)="connectWallet(walletTypes.phantom)">
       <span>Connect Phantom Wallet</span>
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>    </a>
     
-    <a class="card" rel="noopener" href="#" (click)="getTokenBalance()">
+    <a class="card" rel="noopener" href="javascript:;" (click)="getTokenBalance(walletTypes.phantom)">
         <span>Get Token Balance</span>
         <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>    </a>
     
-    <a class="card" rel="noopener" href="#" (click)="transferToken()">
+    <a class="card" rel="noopener" href="javascript:;" (click)="transferToken(walletTypes.phantom)">
           <span>Transfer Token</span>
           <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>    </a>
     
-    <a class="card" rel="noopener" href="#" (click)="disconnectWallet()">
+    <a class="card" rel="noopener" href="javascript:;" (click)="disconnectWallet(walletTypes.phantom)">
+            <span>Disconnect Wallet</span>
+            <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>    </a>
+  </div>
+
+  <!-- Resources -->
+  <h2>Solflare wallet</h2>
+  <p>Here are some methods:</p>
+
+  <div class="card-container">
+    <a class="card" rel="noopener" href="javascript:;" (click)="connectWallet(walletTypes.solflare)">
+      <span>Connect Solflare Wallet</span>
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>    </a>
+    
+    <a class="card" rel="noopener" href="javascript:;" (click)="getTokenBalance(walletTypes.solflare)">
+        <span>Get Token Balance</span>
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>    </a>
+    
+    <a class="card" rel="noopener" href="javascript:;" (click)="transferToken(walletTypes.solflare)">
+          <span>Transfer Token</span>
+          <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>    </a>
+    
+    <a class="card" rel="noopener" href="javascript:;" (click)="disconnectWallet(walletTypes.solflare)">
             <span>Disconnect Wallet</span>
             <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>    </a>
   </div>
